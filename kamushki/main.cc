@@ -42,14 +42,12 @@
 
 
 int main(){
-	//unsigned stone_count = d(rnd);
 	using clk = std::chrono::system_clock;
 	std::random_device rd;
 	std::minstd_rand rnd{unsigned(clk::now().time_since_epoch().count())};
 	std::uniform_int_distribution<> d {15,25};
 	std::uniform_int_distribution <> d1{1,3};
 	int lvl;
-	//Сообщаем юзверю о кол-ве камней
 	do{
 		unsigned stone_count = d(rnd);
 		lvl = read_int_in_range("Выберите уровень:\n"
@@ -64,13 +62,9 @@ int main(){
 		while(lvl != 4){
 		std::cout << "Каждый ход вы можете взять из кучи 1, 2 или 3 камушка. Не больше и не меньше." << std::endl;
 		std::cout << std::endl;
-		//Спрашиваем, сколько тянет юзверь
 		std::cout << "Сколько камушков Вы берете?" << std::endl;
 		int x = read_int_in_range("", 1, std::min (3U, stone_count));
-		//Уменьшаем кучу
 		stone_count = stone_count - x;
-		//Если 0 камней, то юзверь проиграл, иначе ход компьютера
-		//Если 1 камень, то проиграл компьютер
 		if (stone_count < 26){
 			std::cout << "В куче " << stone_count << " камушков" << std::endl;}
 			if (stone_count == 0 || stone_count > 25){
@@ -115,11 +109,7 @@ int main(){
 						std::cout << "В куче " << stone_count << " камушков" << std::endl;
 					}
 			}
-		//if (lvl==4)
-		//	return 0;
 		}while(true);
-	//for(unsigned i = 0; i < 10; i++)
-		//std::cout << d(rnd) << ' ';
 	return 0;
 }
 
